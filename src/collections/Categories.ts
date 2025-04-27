@@ -1,12 +1,10 @@
 import type { CollectionConfig } from "payload";
-import { text } from "stream/consumers";
 
 export const Categories: CollectionConfig = {
   slug: "categories",
-  // access: {
-  //   create: () => false,
-  //   update: () => false,
-  // },
+  admin: {
+    useAsTitle: "name",
+  },
   fields: [
     {
       name: "name",
