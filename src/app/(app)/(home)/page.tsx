@@ -1,9 +1,10 @@
-import { getQueryClient, trpc } from "@/trpc/server";
+"use client";
+import { useTRPC } from "@/trpc/client";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function Home() {
-  const queryClient = getQueryClient();
-  const categories = await queryClient.fetchQuery(
-    trpc.categories.getMany.queryOptions()
-  );
-  return <div>Home page{JSON.stringify(categories)}</div>;
+export default function Home() {
+  const trpc = useTRPC();
+  const { data } = useQuery(trpc.auth.session.queryOptions());
+
+  return <div>Home page</div>;
 }
